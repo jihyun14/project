@@ -1,0 +1,496 @@
+body {
+    font-family: Arial, sans-serif; /* 기본 글씨체 Arial */
+    margin: 0;
+    padding:0;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.text-center { text-align: center; }
+.text-justify { text-align: justify; }
+.text-left { text-align: left; }
+.float-right { float: right; }
+.float-left { float: left; }
+.clear-both { clear: both; } /* float 요소 해제 */
+.padding-small { padding: 8px 16px; }
+.padding-medium { padding: 16px 24px; }
+.padding-large { padding: 24px 32px; }
+.margin-bottom { margin-bottom: 20px; }
+.margin-right { margin-right: 10px; }
+.large-font { font-size: 1.2em; }
+.xxxlarge-font { font-size: 3em; }
+.jumbo-font { font-size: 4em; }
+.opacity-effect { opacity: 0.8; transition: opacity 0.3s ease; }
+.opacity-effect:hover { opacity: 1; }
+.opacity-text { opacity: 0.6; }
+.small-font { font-size: 0.9em; }
+
+.navbar {
+    display: flex; /* ★ Flexbox 활성화 */
+    justify-content: flex-start; /* ★ 모든 항목을 일단 왼쪽에서 시작 */
+    align-items: center; /* 세로 중앙 정렬 */
+    background-color:#ffffff;
+    color: #0a0a0a;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-item {
+    /* float 속성은 Flexbox와 함께 사용하지 않으므로 제거 */
+    /* display: block;도 제거 (Flexbox 아이템은 기본적으로 flex-item 특성을 가짐) */
+    padding: 12px 18px;
+    text-decoration: none;
+    color: #0c0c0c; /* 어두운 배경에 잘 보이도록 흰색 계열 */
+    transition: background-color 0.3s ease;
+    white-space: nowrap; /* 항목이 다음 줄로 넘어가지 않도록 함 */
+}
+.nav-item:hover {
+    background-color: #e2cfec;
+}
+
+/* ★ '검색' 항목을 위한 특별한 스타일 */
+.nav-item-center {
+    margin-left: auto; /* ★ 왼쪽의 모든 공간을 차지하여 자신을 오른쪽으로 밈 */
+    margin-right: -60px;
+
+}
+
+
+/* ★ 로그인/회원가입 버튼을 위한 스타일 (오른쪽으로 보내기) */
+.nav-item.button-primary:nth-last-child(2) { /* 로그인 버튼 */
+    margin-left: auto; /* ★ 검색 이후 남은 모든 공간을 차지하여 자신과 그 뒤 요소를 오른쪽으로 밈 */
+    /* 기존 button-primary는 그대로 두고, 여기에만 margin-left: auto를 줍니다. */
+}
+
+
+/* Header Section */
+.header-section {
+    background-color: #ffffff;
+    padding: 40px 0;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.header-section h1 {
+    margin: 0 0 10px 0;
+    color: #282c34;
+    letter-spacing: 2px;
+}
+.tag-highlight {
+    background-color: #61dafb;
+    color: #282c34;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* Image Header Container */
+.image-header-container {
+    position: relative;
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.header-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.image-overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    color: white;
+    padding: 20px;
+}
+
+.custom-main-title {
+    font-size: 4em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin: 0;
+}
+
+.custom-main-subtitle {
+    font-size: 5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin: 0;
+}
+
+
+/* 로그인 css*/
+/* style.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f9fc; /* 연한 배경색 */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* 전체 뷰포트 높이 */
+    color: #333;
+    /* 상단바가 있을 경우 padding-top은 body가 아닌 login-wrapper에 줘도 됩니다. */
+}
+
+/* 상단바가 고정되어 있다면, 위 body의 display/justify/align을 제거하고,
+   index.html과 signup.html의 body 스타일에 padding-top을 유지하며,
+   아래 login-wrapper에 margin-top을 주는 것이 좋습니다.
+*/
+/*
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f9fc;
+    margin: 0;
+    padding-top: 70px; // 상단바 높이만큼
+    color: #333;
+}
+*/
+
+
+.login-wrapper {
+    /* 기존 body의 flexbox 역할을 이 wrapper가 담당하게 할 수도 있습니다. */
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px); // 상단바 높이 제외
+    width: 100%; */
+
+    /* 상단바가 있을 경우 로그인 박스를 중앙에 배치하기 위한 마진 */
+    margin-top: 50px; /* 상단바 높이 + 여유 공간 */
+    margin-bottom: 50px;
+    padding: 20px; /* 반응형을 위한 패딩 */
+}
+
+
+.login-box {
+    background-color: #ffffff;
+    border-radius: 12px; /* 더 둥근 모서리 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* 그림자 강화 */
+    padding: 40px;
+    width: 100%;
+    max-width: 400px; /* 폼의 최대 너비 */
+    text-align: center;
+}
+
+.login-box h2 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    color: #34495e; /* 진한 회색 */
+}
+
+.login-subtitle {
+    font-size: 1.0em;
+    color: #7f8c8d; /* 연한 회색 */
+    margin-bottom: 30px;
+}
+
+.input-field {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-field label {
+    display: block;
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.input-field input {
+    width: calc(100% - 20px); /* 패딩 고려 */
+    padding: 12px 10px;
+    border: 1px solid #e0e6ed; /* 얇은 테두리 */
+    border-radius: 8px; /* 둥근 입력 필드 */
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-field input:focus {
+    border-color: #4CAF50; /* 포커스 시 초록색 테두리 */
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2); /* 은은한 그림자 효과 */
+    outline: none;
+}
+
+.options-row {
+    display: flex;
+    justify-content: space-between; /* 양 끝 정렬 */
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 0.9em;
+}
+
+.remember-me input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.remember-me label {
+    color: #555;
+}
+
+.forgot-password {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: #0d0c0e; 
+    text-decoration: underline;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 15px;
+    background-color: #fff; /* 초록색 버튼 */
+    color: black;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.btn-login:hover {
+    background-color: #e2cfec; /* 호버 시 진한 초록 */
+    transform: translateY(-2px); /* 살짝 위로 올라가는 효과 */
+}
+
+.social-login {
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 25px;
+}
+
+.social-login p {
+    color: #777;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block; /* 텍스트 가운데 정렬을 위해 */
+    background: #ffffff; /* 배경색으로 줄 위 텍스트를 띄우기 */
+    padding: 0 10px;
+    top: -35px; /* 줄 위로 올리기 */
+}
+/* p 태그가 inline-block이므로, 실제 줄은 p 태그에 마진을 주지 않고 부모에 border-top만 주는 방식 */
+.social-login::before {
+    content: '';
+    position: absolute;
+    top: 50%; /* p 태그의 중앙에 위치 */
+    left: 0;
+    right: 0;
+    border-top: 1px solid #eee;
+    z-index: -1; /* p 태그 뒤로 보냄 */
+}
+
+
+.social-buttons {
+    display: flex;
+    justify-content: space-around; /* 버튼 간격 조정 */
+    gap: 10px; /* 버튼 사이의 간격 */
+}
+
+.btn-social {
+    flex: 1; /* 가로 공간을 균등하게 차지 */
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+}
+
+.btn-social.google {
+    background-color: #db4437; /* Google 브랜드 색상 */
+    color: white;
+}
+.btn-social.google:hover {
+    background-color: #c0392b;
+    transform: translateY(-1px);
+}
+
+.btn-social.facebook {
+    background-color: #3b5998; /* Facebook 브랜드 색상 */
+    color: white;
+}
+.btn-social.facebook:hover {
+    background-color: #2f477a;
+    transform: translateY(-1px);
+}
+
+.signup-text {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.signup-text a {
+    color: #12338f; /* 초록색 링크 */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+/*회원가입 폼 css*/
+.signup-wrapper { /* 클래스 이름은 그대로 'signup-wrapper' 사용 */
+    margin-top: 50px; /* 상단바 높이 + 여유 공간 */
+    margin-bottom: 50px;
+    padding: 20px;
+}
+
+.signup-box { /* 클래스 이름은 그대로 'signup-box' 사용 */
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+.signup-box h2 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    color: #34495e;
+}
+
+.signup-subtitle {
+    font-size: 1.0em;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}
+
+.password-hint {
+    font-size: 0.85em;
+    color: #666;
+    text-align: left;
+    display: block;
+    margin-top: 5px;
+}
+
+.btn-signup { /* 클래스 이름은 그대로 'btn-signup' 사용 */
+    width: 100%;
+    padding: 15px;
+    background-color: white; 
+    color: black;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 25px;
+}
+
+.btn-signup:hover {
+    background-color: #e2cfec; 
+    transform: translateY(-2px);
+}
+
+.social-signup { /* 클래스 이름은 그대로 'social-signup' 사용 */
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 25px;
+}
+
+.social-signup p {
+    color: #777;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+    background: #ffffff;
+    padding: 0 10px;
+    top: -35px;
+}
+
+.login-text { /* 클래스 이름은 그대로 'login-text' 사용 */
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.login-text a {
+    color: #0b0d61;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-text a:hover {
+    text-decoration: underline;
+}
+
+/* --- 프로필 사진 업로드 필드 스타일 --- */
+.profile-upload-field {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.profile-preview-area {
+    width: 120px;
+    height: 120px;
+    border: 2px dashed #ccc;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px auto 0;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    position: relative;
+}
+
+.profile-preview-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    border-radius: 50%;
+}
+
+.profile-preview-area p {
+    color: #888;
+    font-size: 0.9em;
+    position: absolute;
+    z-index: 1;
+}
+
+.profile-upload-field input[type="file"] {
+    display: none;
+}
+
+.profile-preview-area.has-image p {
+    display: none;
+}
+
+.profile-preview-area.has-image img {
+    display: block;
+}

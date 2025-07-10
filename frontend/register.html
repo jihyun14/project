@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    
+
+    <nav class="navbar">
+    
+            <a href="#" class="nav-item">메뉴</a>
+            <a href="index.html" class="nav-item">홈</a>
+
+            <a href="#" class="nav-item nav-item-center">검색</a>
+
+            <a href="login.html" class="nav-item button-primary">로그인</a>
+            <a href="register.html" class="nav-item button-primary">회원가입</a>
+        </nav>
+    <div class="signup-wrapper"> <div class="signup-box"> <h2>회원가입</h2>
+            <p class="signup-subtitle">새로운 계정을 만들고 시작하세요.</p>
+            <form action="/signup" method="POST" id="register-form" enctype="multipart/form-data"> <div class="input-field">
+                    <label for="username">사용자 이름</label>
+                    <input type="text" id="username" name="username" placeholder="사용자 이름을 입력하세요" required minlength="2">
+                </div>
+                <div class="input-field">
+                    <label for="id">아이디</label>
+                    <input type="text" id="id" name="user_id" placeholder="아이디를 입력하세요" required>
+                </div>
+                <div class="input-field">
+                    <label for="email">이메일</label>
+                    <input type="email" id="email" name="email" placeholder="이메일 주소를 입력하세요" required>
+                </div>
+                <div class="input-field">
+                    <label for="password">비밀번호</label>
+                    <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required minlength="8">
+                    <small class="password-hint">최소 8자, 영문, 숫자, 특수문자 포함</small>
+                </div>
+                <div class="input-field">
+                    <label for="password-confirm">비밀번호 확인</label>
+                    <input type="password" id="password_confirm" name="password_confirm" placeholder="비밀번호를 다시 입력하세요" required>
+                </div>
+
+                <div class="input-field profile-upload-field">
+                    <label for="profile-image">프로필 사진 (선택 사항)</label>
+                    <input type="file" id="profile_image" name="profile_image" accept="image/*">
+                    <div class="profile-preview-area">
+                        <img id="profile-image-preview" src="#" alt="프로필 이미지 미리보기">
+                        <p id="profile-placeholder">이미지 선택</p>
+                    </div>
+                </div>
+                     <p id="error-message" style="color: red; margin-bottom: 15px; font-weight: bold;"></p>
+                        <button type="submit" class="btn-signup" id="submit-btn">가입하기</button>
+               
+                <div class="social-signup">
+                    <p>또는 다른 계정으로 가입</p>
+                    <div class="social-buttons">
+                        <button type="button" class="btn-social google">Google</button>
+                        <button type="button" class="btn-social facebook">Facebook</button>
+                    </div>
+                </div>
+
+                <p class="login-text">이미 계정이 있으신가요? <a href="login.html">로그인</a></p>
+            </form>
+        </div>
+    </div>
+        <script src="assets/js/register.js"></script>
+     </body>
+</html>
+
